@@ -14,7 +14,7 @@ sed -i -e "s/thumbor:x:$ORIG_GID:/thumbor:x:$DOCKER_GID:/" /etc/group
 chown -R ${DOCKER_UID}:${DOCKER_GID} ${ORIG_HOME}
 
 if [ "$1" = 'thumbor' ]; then
-    sudo -u thumbor -H sh -c "cd /home/thumbor/app; thumbor --port=8080 --conf=/home/thumbor/conf/thumbor.conf -k /home/thumbor/conf/thumbor.key >> /home/thumbor/app/thumbor.log"
+    sudo -u thumbor -H sh -c "cd /home/thumbor/app; thumbor --port=8080 --conf=/home/thumbor/conf/thumbor.conf -k /home/thumbor/conf/thumbor.key >> /home/thumbor/app/thumbor.log 2>&1"
 fi
 
 sudo -u thumbor -H sh -c "cd /home/thumbor/app; $@"

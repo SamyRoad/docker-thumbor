@@ -5,8 +5,8 @@ ENV DOCKER_UID 1000
 ENV DOCKER_GID 1000
 
 RUN  \
-    apt-get update --quiet && \
-    apt-get -y --quiet install build-essential checkinstall gcc python python-dev \
+    apt-get update -qq && \
+    apt-get -y -qq install build-essential checkinstall gcc python python-dev \
         libpng12-dev libtiff5-dev libpng-dev libjasper-dev libwebp-dev \
         libcurl4-openssl-dev python-pgmagick libmagick++-dev graphicsmagick \
         libopencv-dev python-opencv python-pip && \

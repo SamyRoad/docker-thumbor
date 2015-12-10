@@ -6,7 +6,9 @@ ENV DOCKER_GID 1000
 
 RUN  \
     apt-get update -qq && \
-    apt-get -y -qq install build-essential checkinstall gcc python python-dev \
+    apt-get upgrade -y -qq && \
+    apt-get autoremove -y -qq && \
+    apt-get -y -qq install build-essential python python-dev \
         libpng12-dev libtiff5-dev libpng-dev libjasper-dev libwebp-dev \
         libcurl4-openssl-dev python-pgmagick libmagick++-dev graphicsmagick \
         libopencv-dev python-opencv python-pip && \
@@ -14,7 +16,7 @@ RUN  \
     adduser thumbor --home /home/thumbor --shell /bin/bash --disabled-password --gecos "" && \
     mkdir /home/thumbor/app && chown -R thumbor:thumbor /home/thumbor/app && \
     mkdir /home/thumbor/conf && chown -R thumbor:thumbor /home/thumbor/conf && \
-    pip install pycurl numpy thumbor==${THUMBOR_VERSION} tc_aws
+    pip install pycurl numpy thumbor tc_aws
 
 COPY thumbor.conf /home/thumbor/conf/thumbor.conf
 COPY thumbor.key /home/thumbor/conf/thumbor.key

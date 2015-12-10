@@ -16,19 +16,19 @@ RUN  \
     adduser thumbor --home /home/thumbor --shell /bin/bash --disabled-password --gecos "" && \
     mkdir /home/thumbor/app && chown -R thumbor:thumbor /home/thumbor/app && \
     mkdir /home/thumbor/conf && chown -R thumbor:thumbor /home/thumbor/conf && \
-    pip install pycurl numpy thumbor tc_aws
+    pip install pycurl numpy thumbor==${THUMBOR_VERSION} tc_aws
 
 COPY thumbor.conf /home/thumbor/conf/thumbor.conf
 COPY thumbor.key /home/thumbor/conf/thumbor.key
 
-COPY entrypoint.sh /sbin
-RUN chmod 755 /sbin/entrypoint.sh
+COPY entrypoint.sh /
+RUN chmod 755 /entrypoint.sh
 
 VOLUME ["/home/thumbor/app"]
 
 WORKDIR /home/thumbor/app
 
-ENTRYPOINT ["/sbin/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
 CMD ["thumbor"]
 
 EXPOSE 8080

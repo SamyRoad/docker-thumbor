@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-ENV THUMBOR_VERSION  6.0.1
+ENV THUMBOR_VERSION 6.0.1
 ENV DOCKER_UID 1000
 ENV DOCKER_GID 1000
 
@@ -16,7 +16,7 @@ RUN  \
     adduser thumbor --home /home/thumbor --shell /bin/bash --disabled-password --gecos "" && \
     mkdir /home/thumbor/app && chown -R thumbor:thumbor /home/thumbor/app && \
     mkdir /home/thumbor/conf && chown -R thumbor:thumbor /home/thumbor/conf && \
-    pip install pycurl numpy thumbor==${THUMBOR_VERSION} tc_aws
+    pip install thumbor==${THUMBOR_VERSION} tc_aws
 
 COPY thumbor.conf /home/thumbor/conf/thumbor.conf
 COPY thumbor.key /home/thumbor/conf/thumbor.key

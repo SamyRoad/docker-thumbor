@@ -15,7 +15,7 @@ chown -R ${DOCKER_UID}:${DOCKER_GID} ${ORIG_HOME}
 
 if [ "$1" = 'thumbor' ]; then
   sudo -u thumbor -H sh -c "cd /home/thumbor/app; \
-    thumbor --port=8080 --conf=/home/thumbor/conf/thumbor.conf -k /home/thumbor/conf/thumbor.key 2>&1"
+    thumbor --port=8080 -l info --conf=/home/thumbor/conf/thumbor.conf -k /home/thumbor/conf/thumbor.key 2>&1"
 fi
 
 sudo -u thumbor -H sh -c "cd /home/thumbor/app; $@"

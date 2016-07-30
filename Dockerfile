@@ -16,6 +16,7 @@ RUN  \
     adduser thumbor --home /home/thumbor --shell /bin/bash --disabled-password --gecos "" && \
     mkdir /home/thumbor/app && chown -R thumbor:thumbor /home/thumbor/app && \
     mkdir /home/thumbor/conf && chown -R thumbor:thumbor /home/thumbor/conf && \
+    pip install raven --upgrade && \
     pip install thumbor==${THUMBOR_VERSION} tc_aws
 
 COPY thumbor.conf /home/thumbor/conf/thumbor.conf

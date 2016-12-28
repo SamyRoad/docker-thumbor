@@ -1,6 +1,6 @@
 FROM ubuntu:16.04
 
-ENV THUMBOR_VERSION 6.1.5
+ENV THUMBOR_VERSION 6.2.0
 ENV DOCKER_UID 1000
 ENV DOCKER_GID 1000
 
@@ -11,7 +11,7 @@ RUN  \
     apt-get -y -qq install sudo build-essential python python-dev \
         libpng12-dev libtiff5-dev libpng-dev libjasper-dev libwebp-dev \
         libssl-dev libcurl4-openssl-dev python-pgmagick libmagick++-dev graphicsmagick \
-        libopencv-dev python-opencv python-pip gifsicle && \
+        libopencv-dev python-opencv python-pip gifsicle ffmpeg libjpeg-progs && \
     apt-get clean && \
     adduser thumbor --home /home/thumbor --shell /bin/bash --disabled-password --gecos "" && \
     mkdir /home/thumbor/app && chown -R thumbor:thumbor /home/thumbor/app && \
